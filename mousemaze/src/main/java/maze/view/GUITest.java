@@ -1,37 +1,35 @@
 package maze.view;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class GUITest extends Application {
+public class GUITest  extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("GUI Test");
+        primaryStage.setTitle("Translate Example");
 
-        Button button = new Button();
-        button.setText("Click me!");
+        Button button = new Button("Click me!");
+        button.setLayoutX(50); // Set initial x-position
+        button.setLayoutY(50); // Set initial y-position
 
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Button clicked!");
-            }
+        button.setOnAction(event -> {
+            double newX = button.getLayoutX() + 10; // Move 10 units to the right
+            double newY = button.getLayoutY() + 10; // Move 10 units down
+            button.setLayoutX(newX);
+            button.setLayoutY(newY);
         });
 
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
-
-        Scene scene = new Scene(layout, 300, 200);
+        Pane pane = new Pane(button);
+        Scene scene = new Scene(pane, 300, 200);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 }
+
