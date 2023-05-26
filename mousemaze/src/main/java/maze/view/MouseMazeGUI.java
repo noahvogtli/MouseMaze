@@ -19,12 +19,8 @@ public class MouseMazeGUI extends Application
     @Override
     public void start(Stage primaryStage) throws Exception 
     {
-        File mousefile = new File("ProjectMouseMaze/MouseMaze/mousemaze/src/main/java/maze/data/art/Mouse.png");
-        Image mouse = new Image(mousefile.toURI().toString());
-        ImageView mouseView = new ImageView(mouse);
-        File pathfile = new File("ProjectMouseMaze/MouseMaze/mousemaze/src/main/java/maze/data/art/Path.png");
-        Image path = new Image(pathfile.toURI().toString());
-        ImageView pathView = new ImageView(path);
+        ImageView mouseView = createImage("mousemaze/src/main/java/maze/data/art/Mouse.png");
+        ImageView pathView = createImage("mousemaze/src/main/java/maze/data/art/Path.png");
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(pathView,mouseView);
         pane = new GridPane();
@@ -37,5 +33,13 @@ public class MouseMazeGUI extends Application
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static ImageView createImage(String path)
+    {
+        File file = new File(path);
+        Image image = new Image(file.toURI().toString());
+        ImageView view = new ImageView(image);
+        return view;
     }
 }
