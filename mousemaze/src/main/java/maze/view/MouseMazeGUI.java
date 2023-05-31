@@ -42,11 +42,13 @@ public class MouseMazeGUI extends Application
         // Set up row and column constraints
         for (int i = 0; i < GRID_SIZE; i++) {
             ColumnConstraints column = new ColumnConstraints();
-            column.setPercentWidth(100.0 / GRID_SIZE);
+            column.setMaxWidth(38.5);
+            // column.setPercentWidth(100.0 / GRID_SIZE);
             gridPane.getColumnConstraints().add(column);
 
             RowConstraints row = new RowConstraints();
-            row.setPercentHeight(100.0 / GRID_SIZE);
+            // row.setPercentHeight(100.0 / GRID_SIZE);
+            row.setMaxHeight(38.5);
             gridPane.getRowConstraints().add(row);
         }
 
