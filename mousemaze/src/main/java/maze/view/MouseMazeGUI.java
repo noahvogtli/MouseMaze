@@ -3,6 +3,7 @@ package maze.view;
 import java.io.File;
 
 import javafx.application.Application;
+import javafx.css.Size;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -28,7 +29,8 @@ public class MouseMazeGUI extends Application
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(pathView,mouseView);
         pane = new Pane();
-        pane.setPrefSize(500,500);
+        pane.setPrefSize(1500,900);
+        pane.setMaxSize(1500, 900);
         pane.getChildren().addAll(stackPane);
         Scene scene = new Scene(pane);
         scene.setOnKeyPressed(e -> {
