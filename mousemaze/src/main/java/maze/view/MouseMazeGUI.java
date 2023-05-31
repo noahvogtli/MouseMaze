@@ -26,20 +26,21 @@ public class MouseMazeGUI extends Application
         ImageView mouseView = createImage("mousemaze/src/main/java/maze/data/art/Mouse.png");
         ImageView pathView = createImage("mousemaze/src/main/java/maze/data/art/Path.png");
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(pathView,mouseView);
+        stackPane.getChildren().addAll(mouseView);
         pane = new Pane();
-        pane.setPrefSize(500,500);
+        pane.setMaxSize(1920, 1080);
+        pane.setPrefSize(800, 800);
         pane.getChildren().addAll(stackPane);
         Scene scene = new Scene(pane);
         scene.setOnKeyPressed(e -> {
                 if ( e.getCode() == KeyCode.RIGHT) {
-                    stackPane.setLayoutX(stackPane.getLayoutX() + 50);
+                    stackPane.setLayoutX(stackPane.getLayoutX() + 25);
                 } else if (e.getCode() == KeyCode.LEFT) {
-                    stackPane.setLayoutX(stackPane.getLayoutX() - 50);
+                    stackPane.setLayoutX(stackPane.getLayoutX() - 25);
                 } else if (e.getCode() == KeyCode.UP) {
-                    stackPane.setLayoutY(stackPane.getLayoutY() - 50);
+                    stackPane.setLayoutY(stackPane.getLayoutY() - 25);
                 } else if (e.getCode() == KeyCode.DOWN) {
-                    stackPane.setLayoutY(stackPane.getLayoutY() + 50);
+                    stackPane.setLayoutY(stackPane.getLayoutY() + 25);
                 }
         });
         primaryStage.setScene(scene);
@@ -57,4 +58,5 @@ public class MouseMazeGUI extends Application
         ImageView view = new ImageView(image);
         return view;
     }
+     
 }
