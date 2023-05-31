@@ -1,6 +1,10 @@
 package maze.view;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.css.Size;
@@ -18,19 +22,23 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import maze.model.Maze;
 
 public class MouseMazeGUI extends Application
 {
     private static final int GRID_SIZE = 50; // GridPane size
+    public GridPane gridPane = new GridPane();
+    public Maze maze = new Maze("mousemaze/src/main/java/maze/data/Level1.csv");
+    private static String grass1 = "mousemaze/src/main/java/maze/data/art/Grass1.png";
+    private static String grass2 = "mousemaze/src/main/java/maze/data/art/Grass2.png";
+    private static ArrayList<String> grasses = new ArrayList<>(Arrays.asList(grass1,grass2));
+    private static String path1 = "mousemaze/src/main/java/maze/data/art/Path.png";
+    private static String path2 = "mousemaze/src/main/java/maze/data/art/Path_2.png";
+    private static ArrayList<String> paths = new ArrayList<>(Arrays.asList(path1,path2));
+
 
     @Override
     public void start(Stage primaryStage) {
-        GridPane gridPane = new GridPane();
-        File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
-        Image image = new Image(file.toURI().toString());
-        ImageView imageView = new ImageView(image);
-        gridPane.add(imageView, 0, 0);
-
         // Set up row and column constraints
         for (int i = 0; i < GRID_SIZE; i++) {
             ColumnConstraints column = new ColumnConstraints();
@@ -41,6 +49,12 @@ public class MouseMazeGUI extends Application
             row.setPercentHeight(100.0 / GRID_SIZE);
             gridPane.getRowConstraints().add(row);
         }
+
+        setGridImage(maze);
+        File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
+        Image image = new Image(file.toURI().toString());
+        ImageView imageView = new ImageView(image);
+        gridPane.add(imageView, 0, 0);
 
         Scene scene = new Scene(gridPane, 1500, 800);
         scene.setOnKeyPressed(event -> {
@@ -78,7 +92,7 @@ public class MouseMazeGUI extends Application
         scene.getRoot().requestFocus();
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Image Move App");
+        primaryStage.setTitle("Mouse Maze");
         primaryStage.show();
     }
 
@@ -92,6 +106,43 @@ public class MouseMazeGUI extends Application
         Image image = new Image(file.toURI().toString());
         ImageView view = new ImageView(image);
         return view;
+    }
+
+    public static int randomGrass()
+    {
+        Random random = new Random();
+        int randomInt = random.nextInt(grasses.size());
+        return randomInt;
+        
+    }
+
+    public static int randomPath()
+    {
+        Random random = new Random();
+        int randomInt = random.nextInt(paths.size());
+        return randomInt;
+        
+    }
+
+    public void setGridImage(Maze maze)
+    {
+        int row;
+        int col;
+        maze.createBoard();
+        for(row = 0; row < GRID_SIZE; row++)
+        {
+            for(col = 0; col < GRID_SIZE; col++)
+            {
+                if(maze.getBoard()[col][row].equals("G"))
+                {
+                    gridPane.add(createImage(grasses.get(randomGrass())), col, row);
+                }
+                else if(maze.getBoard()[col][row].equals("P"))
+                {
+                    gridPane.add(createImage(paths.get(randomPath())), col, row);
+                }
+            }
+        }
     }
      
 }

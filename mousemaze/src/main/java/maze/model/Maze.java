@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Maze 
 {
-    private final int BOARD_DIMENSION = 30;
+    private final int BOARD_DIMENSION = 50;
     private String[][] board;
     private String filename;
 
@@ -57,11 +57,13 @@ public class Maze
         }
         return boardString;
     }
+
+    
     
     
     public static void main(String[] args) 
     {
-        Maze maze = new Maze("C:/Users/ninja/PersonalCode/MouseMaze/Mouse-Maze/mousemaze/src/main/java/mousemaze/Data/Level1.csv");
+        Maze maze = new Maze("mousemaze/src/main/java/maze/data/Level1.csv");
         maze.createBoard();
         
         System.out.println(maze.toString());
