@@ -19,6 +19,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
@@ -27,7 +28,8 @@ import maze.model.Maze;
 
 public class MouseMazeGUI extends Application
 {
-    private static final int GRID_SIZE = 50; // GridPane size
+    private static final int ROW_NUM = 50; // Number of ROWS
+    private static final int COL_NUM = 29; 
     public GridPane gridPane = new GridPane();
     public Maze maze = new Maze("mousemaze/src/main/java/maze/data/Level1.csv");
     private static String grass1 = "mousemaze/src/main/java/maze/data/art/Grass1.png";
@@ -42,18 +44,26 @@ public class MouseMazeGUI extends Application
     public void start(Stage primaryStage) {
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        // Set up row and column constraints
-        for (int i = 0; i < GRID_SIZE; i++) {
-            ColumnConstraints column = new ColumnConstraints();
-            column.setMaxWidth(screenWidth / 50);
-            // column.setPercentWidth(100.0 / GRID_SIZE);
-            gridPane.getColumnConstraints().add(column);
+        double aspectRatio = screenWidth / screenHeight;
 
+        // Set up row and column constraints
+        for (int i = 0; i < COL_NUM; i++) {
+            ColumnConstraints column = new ColumnConstraints();
+            column.setMaxWidth(screenWidth/50);
+            column.setHgrow(Priority.ALWAYS);
+            gridPane.getColumnConstraints().add(column);
+    
+
+        }   
+
+        for (int i = 0; i < COL_NUM; i++) 
+        {
             RowConstraints row = new RowConstraints();
-            // row.setPercentHeight(100.0 / GRID_SIZE);
-            row.setMaxHeight(screenHeight / 60);
+            row.setMaxHeight(screenHeight / 29);
+            row.setVgrow(Priority.ALWAYS);
             gridPane.getRowConstraints().add(row);
-        }
+        } 
+
 
         setGridImage(maze);
         File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
@@ -74,7 +84,7 @@ public class MouseMazeGUI extends Application
                     }
                     break;
                 case DOWN:
-                    if (row < GRID_SIZE - 1) {
+                    if (row < ROW_NUM - 1) {
                         GridPane.setRowIndex(imageView, row + 1);
                     }
                     break;
@@ -84,7 +94,7 @@ public class MouseMazeGUI extends Application
                     }
                     break;
                 case RIGHT:
-                    if (column < GRID_SIZE - 1) {
+                    if (column < COL_NUM - 1) {
                         GridPane.setColumnIndex(imageView, column + 1);
                     }
                     break;
@@ -134,9 +144,9 @@ public class MouseMazeGUI extends Application
         int row;
         int col;
         maze.createBoard();
-        for(row = 0; row < GRID_SIZE; row++)
+        for(row = 0; row < COL_NUM; row++)
         {
-            for(col = 0; col < GRID_SIZE; col++)
+            for(col = 0; col < ROW_NUM; col++)
             {
                 if(maze.getBoard()[col][row].equals("G"))
                 {
