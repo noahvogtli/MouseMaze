@@ -28,8 +28,8 @@ import maze.model.Maze;
 
 public class MouseMazeGUI extends Application
 {
-    private static final int ROW_NUM = 50; // Number of ROWS
-    private static final int COL_NUM = 29; 
+    private static final int ROW_NUM = 45; // Number of ROWS
+    private static final int COL_NUM = 27; 
     public GridPane gridPane = new GridPane();
     public Maze maze = new Maze("mousemaze/src/main/java/maze/data/Level1.csv");
     private static String grass1 = "mousemaze/src/main/java/maze/data/art/Grass1.png";
@@ -84,7 +84,7 @@ public class MouseMazeGUI extends Application
                     }
                     break;
                 case DOWN:
-                    if (row < ROW_NUM - 1) {
+                    if (row < COL_NUM - 1) {
                         GridPane.setRowIndex(imageView, row + 1);
                     }
                     break;
@@ -94,7 +94,7 @@ public class MouseMazeGUI extends Application
                     }
                     break;
                 case RIGHT:
-                    if (column < COL_NUM - 1) {
+                    if (column < ROW_NUM - 1) {
                         GridPane.setColumnIndex(imageView, column + 1);
                     }
                     break;
