@@ -21,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import maze.model.Maze;
 
@@ -39,16 +40,18 @@ public class MouseMazeGUI extends Application
 
     @Override
     public void start(Stage primaryStage) {
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
         // Set up row and column constraints
         for (int i = 0; i < GRID_SIZE; i++) {
             ColumnConstraints column = new ColumnConstraints();
-            column.setMaxWidth(38.5);
+            column.setMaxWidth(screenWidth / 50);
             // column.setPercentWidth(100.0 / GRID_SIZE);
             gridPane.getColumnConstraints().add(column);
 
             RowConstraints row = new RowConstraints();
             // row.setPercentHeight(100.0 / GRID_SIZE);
-            row.setMaxHeight(38.5);
+            row.setMaxHeight(screenHeight / 60);
             gridPane.getRowConstraints().add(row);
         }
 
