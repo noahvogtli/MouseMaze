@@ -46,29 +46,27 @@ public class MouseMazeGUI extends Application
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
         double aspectRatio = screenWidth / screenHeight;
 
-        // Set up row and column constraints
-        for (int i = 0; i < COL_NUM; i++) {
+        // Set up column constraints
+        for (int i = 0; i < ROW_NUM; i++) {
             ColumnConstraints column = new ColumnConstraints();
-            column.setMaxWidth(screenWidth/50);
-            column.setHgrow(Priority.ALWAYS);
+            column.setPercentWidth(100.0 / ROW_NUM);
             gridPane.getColumnConstraints().add(column);
-    
+        }
 
-        }   
-
-        for (int i = 0; i < COL_NUM; i++) 
-        {
+        // Set up row constraints
+        for (int i = 0; i < COL_NUM; i++) {
             RowConstraints row = new RowConstraints();
-            row.setMaxHeight(screenHeight / 29);
-            row.setVgrow(Priority.ALWAYS);
+            row.setPercentHeight(100.0 / COL_NUM);
             gridPane.getRowConstraints().add(row);
-        } 
+        }
 
 
         setGridImage(maze);
         File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
         Image image = new Image(file.toURI().toString());
         ImageView imageView = new ImageView(image);
+        imageView.setTranslateX(-5);
+        imageView.setTranslateY(-10);
         gridPane.add(imageView, 0, 0);
 
         Scene scene = new Scene(gridPane, 1500, 800);
