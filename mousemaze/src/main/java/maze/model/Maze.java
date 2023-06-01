@@ -58,6 +58,11 @@ public class Maze
         return boardString;
     }
 
+    public String getSymbol(int row, int col)
+    {
+        return board[col][row];
+    }
+
     
     
     
