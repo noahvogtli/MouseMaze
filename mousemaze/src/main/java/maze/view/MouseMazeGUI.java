@@ -69,11 +69,10 @@ public class MouseMazeGUI extends Application
             gridPane.getRowConstraints().add(row);
         }
 
-
         setGridImage(maze);
         File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
         Image image = new Image(file.toURI().toString());
-        ImageView imageView = new ImageView(image);
+        final ImageView imageView = new ImageView(image);
         imageView.setTranslateX(-8);
         imageView.setTranslateY(-10);
         imageView.setScaleX(0.9);
@@ -148,20 +147,20 @@ public class MouseMazeGUI extends Application
                     }
                     break;
                 case RIGHT:
-                        if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("P"))
-                        {
-                            GridPane.setColumnIndex(imageView, column + 1);
-                        }
-                        else if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("C"))
-                        {
-                            gameWon = true;
-                            Scene scene2 = winScreen.WinScene();
-                            primaryStage.setScene(scene2);
-                        }
-                        else
-                        {
-                            break;
-                        }
+                    if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("P"))
+                    {
+                        GridPane.setColumnIndex(imageView, column + 1);
+                    }
+                    else if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("C"))
+                    {
+                        gameWon = true;
+                        Scene scene2 = winScreen.WinScene();
+                        primaryStage.setScene(scene2);
+                    }
+                    else
+                    {
+                        break;
+                    }
                     break;
                 default:
                     break;
@@ -242,7 +241,7 @@ public class MouseMazeGUI extends Application
                     gridPane.add(cheese, col, row);
                 }
             }
-            }
         }
     }
+}
 
