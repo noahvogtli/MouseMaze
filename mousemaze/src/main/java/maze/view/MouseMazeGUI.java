@@ -47,17 +47,13 @@ public class MouseMazeGUI extends Application
     private static String bush3 = "mousemaze/src/main/java/maze/data/art/Bush3.png";
     private static ArrayList<String> bushes = new ArrayList<>(Arrays.asList(bush1,bush2,bush3));
     private boolean gameWon = false;
-    private Label label = new Label("YOU WON");
+    private WinScreen winScreen = new WinScreen();
 
 
 
     @Override
     public void start(Stage primaryStage) 
     {
-        
-        double screenWidth = Screen.getPrimary().getBounds().getWidth();
-        double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        double aspectRatio = screenWidth / screenHeight;
 
         // Set up column constraints
         for (int i = 0; i < ROW_NUM; i++) {
@@ -105,7 +101,7 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) - 1).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = new Scene(label);
+                            Scene scene2 = winScreen.WinScene();
                             primaryStage.setScene(scene2);
                         }
                         else
@@ -123,7 +119,7 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) + 1).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = new Scene(label);
+                            Scene scene2 = winScreen.WinScene();
                             primaryStage.setScene(scene2);
                         }
                         else
@@ -142,7 +138,7 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView) - 1, GridPane.getRowIndex(imageView)).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = new Scene(label);
+                            Scene scene2 = winScreen.WinScene();
                             primaryStage.setScene(scene2);
                         }
                         else
@@ -159,7 +155,7 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = new Scene(label);
+                            Scene scene2 = winScreen.WinScene();
                             primaryStage.setScene(scene2);
                         }
                         else
