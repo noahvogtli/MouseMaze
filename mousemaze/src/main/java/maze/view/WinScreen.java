@@ -1,33 +1,24 @@
 package maze.view;
 
-
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
-public class WinScreen
+public class WinScreen extends Application
 {
-    public WinScreen()
+
+    @Override
+    public void start(Stage primaryStage) throws Exception 
     {
-
-    }
-
-    public Scene WinScene() {
         Label label = new Label("YOU WON");
-        label.setFont(new Font("Arial", 75));
-        label.setTextAlignment(TextAlignment.CENTER);
-    
-        VBox vbox1 = new VBox(label);
-        vbox1.setAlignment(Pos.CENTER);
-        vbox1.setPadding(new Insets(100));
-        vbox1.setPrefSize(1500, 800);
-    
-        Scene scene = new Scene(vbox1);
-        return scene;
+        Scene scene = new Scene(label);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
-    
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 }
