@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Maze 
 {
-    private final int BOARD_DIMENSION = 50;
+    private final int BOARD_DIMENSION = 60;
     private String[][] board;
     private String filename;
 
