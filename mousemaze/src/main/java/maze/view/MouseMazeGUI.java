@@ -82,7 +82,7 @@ public class MouseMazeGUI extends Application
         cheese.setScaleY(1.5);
         cheese.setTranslateY(-15);
         cheese.setTranslateX(-10);
-        gridPane.add(imageView, 0, 0);
+        gridPane.add(imageView, 0, 1);
 
         Scene scene = new Scene(gridPane, 1500, 800);
         scene.setOnKeyPressed(event -> {
