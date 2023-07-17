@@ -4,4 +4,5 @@ module maze {
     requires javafx.media;
     opens maze.view to javafx.fxml;
     exports maze.view;
+    exports maze.model;
 }
