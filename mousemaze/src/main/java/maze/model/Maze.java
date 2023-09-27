@@ -4,8 +4,21 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Arrays;
 
+/**
+ * This maze class represents a physical maze board using a 2d array
+ * 
+ * @author Noah Vogtli
+ * @version 1.0
+ */
+
 public class Maze 
 {
+    /**
+     * @param BOARD_DIMENSION dimension of the board
+     * @param board 2d array representation of the maze board
+     * @param filename string representation of the filename of the level
+     */
+    
     private final int BOARD_DIMENSION = 50;
     private String[][] board;
     private String filename;
