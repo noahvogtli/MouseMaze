@@ -17,7 +17,7 @@ public class WinScreen
     }
 
     public Scene WinScene() {
-        Label label = new Label("YOU WON");
+        Label label = new Label("You Won!");
         label.setFont(new Font("Arial", 75));
         label.setTextAlignment(TextAlignment.CENTER);
     
@@ -25,6 +25,7 @@ public class WinScreen
         vbox1.setAlignment(Pos.CENTER);
         vbox1.setPadding(new Insets(100));
         vbox1.setPrefSize(1500, 800);
+    
     
         Scene scene = new Scene(vbox1);
         return scene;

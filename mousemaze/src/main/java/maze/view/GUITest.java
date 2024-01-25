@@ -20,10 +20,12 @@ import javafx.stage.Stage;
 
 public class GUITest extends Application 
 {
-    private static final int GRID_SIZE = 50; // GridPane size
+    private static final int GRID_WIDTH = 45; // GridPane size
+    private static final int GRID_HEIGHT = 27;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) 
+    {
         GridPane gridPane = new GridPane();
         File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
         Image image = new Image(file.toURI().toString());
@@ -31,14 +33,18 @@ public class GUITest extends Application
         gridPane.add(imageView, 0, 0);
 
         // Set up row and column constraints
-        for (int i = 0; i < GRID_SIZE; i++) {
-            ColumnConstraints column = new ColumnConstraints();
-            column.setPercentWidth(100.0 / GRID_SIZE);
-            gridPane.getColumnConstraints().add(column);
+        for (int i = 0; i < GRID_HEIGHT; i++) 
+        {
+            for (int n = 0; n < GRID_WIDTH; n++)
+            {
+                ColumnConstraints column = new ColumnConstraints();
+                column.setPercentWidth(100.0 / GRID_HEIGHT);
+                gridPane.getColumnConstraints().add(column);
 
-            RowConstraints row = new RowConstraints();
-            row.setPercentHeight(100.0 / GRID_SIZE);
-            gridPane.getRowConstraints().add(row);
+                RowConstraints row = new RowConstraints();
+                row.setPercentHeight(100.0 / GRID_WIDTH);
+                gridPane.getRowConstraints().add(row);
+            }
         }
 
         Scene scene = new Scene(gridPane, 1500, 800);
@@ -54,7 +60,7 @@ public class GUITest extends Application
                     }
                     break;
                 case DOWN:
-                    if (row < GRID_SIZE - 1) {
+                    if (row < GRID_WIDTH - 1) {
                         GridPane.setRowIndex(imageView, row + 1);
                     }
                     break;
@@ -64,7 +70,7 @@ public class GUITest extends Application
                     }
                     break;
                 case RIGHT:
-                    if (column < GRID_SIZE - 1) {
+                    if (column < GRID_HEIGHT - 1) {
                         GridPane.setColumnIndex(imageView, column + 1);
                     }
                     break;

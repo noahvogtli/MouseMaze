@@ -29,9 +29,10 @@ import maze.model.Maze;
 public class MouseMazeGUI extends Application
 {
     private static final int ROW_NUM = 45; // Number of ROWS
-    private static final int COL_NUM = 27; 
+    private static final int COL_NUM = 27;
+    private int LEVEL = 1;
     public GridPane gridPane = new GridPane();
-    public Maze maze = new Maze("mousemaze/src/main/java/maze/data/Level1.csv");
+    public Maze maze = new Maze("mousemaze/src/main/java/maze/data/Level"+LEVEL+".csv");
     private static String grass1 = "mousemaze/src/main/java/maze/data/art/Grass1.png";
     private static String grass2 = "mousemaze/src/main/java/maze/data/art/Grass2.png";
     private static String grass3 = "mousemaze/src/main/java/maze/data/art/Grass3.png";
@@ -81,7 +82,7 @@ public class MouseMazeGUI extends Application
         cheese.setScaleX(1.5);
         cheese.setScaleY(1.5);
         cheese.setTranslateY(-15);
-        cheese.setTranslateX(-10);
+        cheese.setTranslateX(-5);
         gridPane.add(imageView, 0, 1);
 
         Scene scene = new Scene(gridPane, 1500, 800);
@@ -89,6 +90,7 @@ public class MouseMazeGUI extends Application
             KeyCode keyCode = event.getCode();
             int column = GridPane.getColumnIndex(imageView);
             int row = GridPane.getRowIndex(imageView);
+            Scene scene2 = winScreen.WinScene();
 
             switch (keyCode) {
                 case UP:
@@ -101,8 +103,9 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) - 1).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = winScreen.WinScene();
-                            primaryStage.setScene(scene2);
+                            LEVEL = LEVEL + 1;
+                            setGridImage(maze);
+                            primaryStage.setScene(scene);
                         }
                         else
                         {
@@ -119,8 +122,9 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) + 1).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = winScreen.WinScene();
-                            primaryStage.setScene(scene2);
+                            LEVEL = LEVEL + 1;
+                            setGridImage(maze);
+                            primaryStage.setScene(scene);
                         }
                         else
                         {
@@ -138,8 +142,9 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView) - 1, GridPane.getRowIndex(imageView)).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = winScreen.WinScene();
-                            primaryStage.setScene(scene2);
+                            LEVEL = LEVEL + 1;
+                            setGridImage(maze);
+                            primaryStage.setScene(scene);
                         }
                         else
                         {
@@ -155,8 +160,18 @@ public class MouseMazeGUI extends Application
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("C"))
                         {
                             gameWon = true;
-                            Scene scene2 = winScreen.WinScene();
-                            primaryStage.setScene(scene2);
+                            LEVEL = LEVEL + 1;
+                            maze = new Maze("mousemaze/src/main/java/maze/data/Level"+LEVEL+".csv");
+                            gridPane.getChildren().clear();
+                            setGridImage(maze);
+                            gridPane.add(imageView, 0, 1);
+                            
+                            Scene newScene = new Scene(gridPane, 1500, 800);
+                            // GridPane.setColumnIndex(imageView, 0);
+                            // GridPane.setRowIndex(imageView, 1);
+                            primaryStage.setScene(newScene);
+                            // If it comes down to it, make a separate java class for each level that creates a new scene
+                            // 
                         }
                         else
                         {
