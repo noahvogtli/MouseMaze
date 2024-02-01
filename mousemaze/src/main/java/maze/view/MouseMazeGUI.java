@@ -51,7 +51,7 @@ public class MouseMazeGUI extends Application
     private WinScreen winScreen = new WinScreen();
     private File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
     private Image image = new Image(file.toURI().toString());
-    private ImageView imageView = new ImageView(image);
+    private ImageView mouse = new ImageView(image);
 
 
 
@@ -75,32 +75,32 @@ public class MouseMazeGUI extends Application
 
         primaryStage.setMaximized(true);
         setGridImage(maze);
-        imageView.setTranslateX(-8);
-        imageView.setTranslateY(-10);
-        imageView.setScaleX(0.9);
-        imageView.setScaleY(0.9);
+        mouse.setTranslateX(-8);
+        mouse.setTranslateY(-10);
+        mouse.setScaleX(0.9);
+        mouse.setScaleY(0.9);
         cheese.setScaleX(1.5);
         cheese.setScaleY(1.5);
         cheese.setTranslateY(-15);
         cheese.setTranslateX(-5);
-        gridPane.add(imageView, 0, 1);
+        gridPane.add(mouse, 0, 1);
 
         Scene scene = new Scene(gridPane, 1500, 800);
         scene.setOnKeyPressed(event -> {
             KeyCode keyCode = event.getCode();
-            int column = GridPane.getColumnIndex(imageView);
-            int row = GridPane.getRowIndex(imageView);
+            int column = GridPane.getColumnIndex(mouse);
+            int row = GridPane.getRowIndex(mouse);
             Scene scene2 = winScreen.WinScene();
 
             switch (keyCode) {
                 case UP:
                     if (row > 0) 
                     {
-                        if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) - 1).equals("P"))
+                        if(maze.getSymbol(GridPane.getColumnIndex(mouse), GridPane.getRowIndex(mouse) - 1).equals("P"))
                         {
-                            GridPane.setRowIndex(imageView, row - 1);
+                            GridPane.setRowIndex(mouse, row - 1);
                         }
-                        else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) - 1).equals("C"))
+                        else if(maze.getSymbol(GridPane.getColumnIndex(mouse), GridPane.getRowIndex(mouse) - 1).equals("C"))
                         {
                             Scene newScene = nextLevel();
                             primaryStage.setScene(newScene);
@@ -113,11 +113,11 @@ public class MouseMazeGUI extends Application
                     break;
                 case DOWN:
                     if (row < COL_NUM - 1) {
-                        if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) + 1).equals("P"))
+                        if(maze.getSymbol(GridPane.getColumnIndex(mouse), GridPane.getRowIndex(mouse) + 1).equals("P"))
                         {
-                            GridPane.setRowIndex(imageView, row + 1);
+                            GridPane.setRowIndex(mouse, row + 1);
                         }
-                        else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) + 1).equals("C"))
+                        else if(maze.getSymbol(GridPane.getColumnIndex(mouse), GridPane.getRowIndex(mouse) + 1).equals("C"))
                         {
                             Scene newScene = nextLevel();
                             primaryStage.setScene(newScene);
@@ -131,33 +131,39 @@ public class MouseMazeGUI extends Application
                 case LEFT:
                     if (column > 0) 
                     {
-                        if(maze.getSymbol(GridPane.getColumnIndex(imageView) - 1, GridPane.getRowIndex(imageView)).equals("P"))
+                        if(maze.getSymbol(GridPane.getColumnIndex(mouse) - 1, GridPane.getRowIndex(mouse)).equals("P"))
                         {
-                            GridPane.setColumnIndex(imageView, column - 1);
+                            setMouseLeft();
+                            GridPane.setColumnIndex(mouse, column - 1);
                         }
-                        else if(maze.getSymbol(GridPane.getColumnIndex(imageView) - 1, GridPane.getRowIndex(imageView)).equals("C"))
+                        else if(maze.getSymbol(GridPane.getColumnIndex(mouse) - 1, GridPane.getRowIndex(mouse)).equals("C"))
                         {
+                            setMouseLeft();
                             Scene newScene = nextLevel();
                             primaryStage.setScene(newScene);
                         }
                         else
                         {
+                            setMouseLeft();
                             break;
                         }
                     }
                     break;
                 case RIGHT:
-                        if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("P"))
+                        if(maze.getSymbol(GridPane.getColumnIndex(mouse) + 1, GridPane.getRowIndex(mouse)).equals("P"))
                         {
-                            GridPane.setColumnIndex(imageView, column + 1);
+                            setMouseRight();
+                            GridPane.setColumnIndex(mouse, column + 1);
                         }
-                        else if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("C"))
+                        else if(maze.getSymbol(GridPane.getColumnIndex(mouse) + 1, GridPane.getRowIndex(mouse)).equals("C"))
                         {
+                            setMouseRight();
                             Scene newScene = nextLevel();
                             primaryStage.setScene(newScene);
                         }
                         else
                         {
+                            setMouseRight();
                             break;
                         }
                     break;
@@ -250,12 +256,24 @@ public class MouseMazeGUI extends Application
         maze = new Maze("mousemaze/src/main/java/maze/data/Level"+LEVEL+".csv");
         gridPane.getChildren().clear();
         setGridImage(maze);
-        gridPane.add(imageView, 0, 1);
+        gridPane.add(mouse, 0, 1);
         
         Scene newScene = new Scene(gridPane, 1500, 800);
-        // GridPane.setColumnIndex(imageView, 0);
-        // GridPane.setRowIndex(imageView, 1);
         return newScene;
+    }
+
+    public void setMouseLeft()
+    {
+        File LeftFile = new File("mousemaze/src/main/java/maze/data/art/MouseLeft.png");
+        Image left = new Image(LeftFile.toURI().toString());
+        mouse.setImage(left);
+    }
+
+    public void setMouseRight()
+    {
+        File RightFile = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
+        Image right = new Image(RightFile.toURI().toString());
+        mouse.setImage(right);
     }
     
 }

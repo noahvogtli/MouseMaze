@@ -3,8 +3,8 @@ P,P,B,G,G,G,G,G,B,P,P,P,P,P,P,P,P,P,B,G,G,B,B,B,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,
 B,P,B,B,B,B,B,B,B,P,B,B,P,B,B,B,B,P,B,G,G,B,P,P,P,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,P,B
 B,P,P,P,P,P,P,B,B,P,P,B,P,B,G,G,B,P,B,G,G,B,P,B,P,B,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,B
 B,B,B,B,B,B,P,B,B,B,B,B,P,B,G,G,B,P,B,G,G,B,P,B,P,B,P,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,P,B
-G,B,B,B,B,B,P,B,G,G,G,B,P,B,G,G,B,P,B,G,G,B,P,B,P,B,P,B,B,B,B,B,B,B,P,B,P,B,B,P,P,P,P,P,B
-G,B,P,P,P,B,P,B,B,B,B,B,P,B,G,G,B,P,B,B,B,B,P,B,P,B,P,P,P,P,P,P,P,B,P,B,P,B,B,P,B,B,B,P,B
+G,B,B,B,B,B,P,B,G,G,G,B,P,B,G,G,B,P,B,G,G,B,P,B,P,B,P,B,B,B,B,B,B,B,B,B,P,B,B,P,P,P,P,P,B
+G,B,P,P,P,B,P,B,B,B,B,B,P,B,G,G,B,P,B,B,B,B,P,B,P,B,P,P,P,P,P,P,P,B,B,B,P,B,B,P,B,B,B,P,B
 G,B,P,B,B,B,P,P,P,P,P,P,P,B,G,G,B,P,P,P,P,P,P,B,P,B,B,B,B,B,B,B,P,B,P,P,P,B,B,P,B,G,B,P,B
 B,B,P,B,B,B,B,B,B,B,B,B,B,B,B,B,B,P,B,B,B,B,B,B,P,P,P,P,B,G,G,B,P,B,B,B,P,B,B,P,B,G,B,P,B
 B,P,P,P,P,P,P,P,P,P,P,P,P,P,P,P,B,P,B,G,G,G,G,B,B,B,B,P,B,B,B,B,P,B,P,B,P,P,P,P,B,G,B,P,B
@@ -16,7 +16,7 @@ B,P,B,P,B,G,G,G,G,G,G,B,P,B,P,B,B,B,B,B,B,B,B,B,B,P,B,P,B,B,B,B,B,B,B,B,B,B,B,G,
 B,P,B,P,B,B,B,B,B,G,G,B,P,B,P,P,P,P,P,P,P,P,P,P,P,P,B,P,B,P,P,P,P,P,P,P,P,P,B,G,B,P,B,G,G
 B,P,B,P,B,P,P,P,B,G,G,B,P,B,B,B,B,B,B,B,B,B,B,B,B,B,B,P,B,P,B,B,B,B,B,B,B,P,B,G,B,P,B,G,G
 B,P,B,P,B,P,B,P,B,G,G,B,P,P,P,P,P,P,P,P,P,P,P,P,P,P,B,P,B,P,B,G,B,P,P,P,B,P,B,G,B,P,B,G,G
-B,P,P,P,B,P,B,P,B,B,B,B,B,B,P,B,B,B,B,B,B,B,B,B,B,P,B,P,B,P,B,G,B,P,G,G,G,P,B,G,B,P,B,G,G
+B,P,P,P,B,P,B,P,B,B,B,B,B,B,P,B,B,B,B,B,B,B,B,B,B,P,B,P,B,P,B,G,B,P,B,B,B,P,B,G,B,P,B,G,G
 B,B,P,B,B,P,B,P,P,P,P,P,B,B,P,B,P,P,P,P,P,P,P,P,P,P,B,P,P,P,B,B,B,P,B,B,B,P,B,G,B,P,B,G,G
 G,B,P,B,B,P,B,B,B,B,B,P,B,B,P,B,P,B,B,B,B,P,B,B,B,B,B,B,B,B,B,P,P,P,P,P,B,P,B,B,B,P,B,G,G
 G,B,P,B,B,P,B,P,P,P,B,P,B,B,B,B,P,P,P,B,B,P,B,B,P,P,P,B,G,G,B,P,B,B,B,P,B,P,B,P,P,P,B,G,G
