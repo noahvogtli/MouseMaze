@@ -49,6 +49,9 @@ public class MouseMazeGUI extends Application
     private static ArrayList<String> bushes = new ArrayList<>(Arrays.asList(bush1,bush2,bush3));
     private boolean gameWon = false;
     private WinScreen winScreen = new WinScreen();
+    private File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
+    private Image image = new Image(file.toURI().toString());
+    private ImageView imageView = new ImageView(image);
 
 
 
@@ -70,11 +73,8 @@ public class MouseMazeGUI extends Application
             gridPane.getRowConstraints().add(row);
         }
 
-
+        primaryStage.setMaximized(true);
         setGridImage(maze);
-        File file = new File("mousemaze/src/main/java/maze/data/art/Mouse.png");
-        Image image = new Image(file.toURI().toString());
-        ImageView imageView = new ImageView(image);
         imageView.setTranslateX(-8);
         imageView.setTranslateY(-10);
         imageView.setScaleX(0.9);
@@ -102,10 +102,8 @@ public class MouseMazeGUI extends Application
                         }
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) - 1).equals("C"))
                         {
-                            gameWon = true;
-                            LEVEL = LEVEL + 1;
-                            setGridImage(maze);
-                            primaryStage.setScene(scene);
+                            Scene newScene = nextLevel();
+                            primaryStage.setScene(newScene);
                         }
                         else
                         {
@@ -121,10 +119,8 @@ public class MouseMazeGUI extends Application
                         }
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView), GridPane.getRowIndex(imageView) + 1).equals("C"))
                         {
-                            gameWon = true;
-                            LEVEL = LEVEL + 1;
-                            setGridImage(maze);
-                            primaryStage.setScene(scene);
+                            Scene newScene = nextLevel();
+                            primaryStage.setScene(newScene);
                         }
                         else
                         {
@@ -141,10 +137,8 @@ public class MouseMazeGUI extends Application
                         }
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView) - 1, GridPane.getRowIndex(imageView)).equals("C"))
                         {
-                            gameWon = true;
-                            LEVEL = LEVEL + 1;
-                            setGridImage(maze);
-                            primaryStage.setScene(scene);
+                            Scene newScene = nextLevel();
+                            primaryStage.setScene(newScene);
                         }
                         else
                         {
@@ -159,19 +153,8 @@ public class MouseMazeGUI extends Application
                         }
                         else if(maze.getSymbol(GridPane.getColumnIndex(imageView) + 1, GridPane.getRowIndex(imageView)).equals("C"))
                         {
-                            gameWon = true;
-                            LEVEL = LEVEL + 1;
-                            maze = new Maze("mousemaze/src/main/java/maze/data/Level"+LEVEL+".csv");
-                            gridPane.getChildren().clear();
-                            setGridImage(maze);
-                            gridPane.add(imageView, 0, 1);
-                            
-                            Scene newScene = new Scene(gridPane, 1500, 800);
-                            // GridPane.setColumnIndex(imageView, 0);
-                            // GridPane.setRowIndex(imageView, 1);
+                            Scene newScene = nextLevel();
                             primaryStage.setScene(newScene);
-                            // If it comes down to it, make a separate java class for each level that creates a new scene
-                            // 
                         }
                         else
                         {
@@ -257,6 +240,22 @@ public class MouseMazeGUI extends Application
                     gridPane.add(cheese, col, row);
                 }
             }
-            }
         }
     }
+
+    public Scene nextLevel()
+    {
+        gameWon = true;
+        LEVEL = LEVEL + 1;
+        maze = new Maze("mousemaze/src/main/java/maze/data/Level"+LEVEL+".csv");
+        gridPane.getChildren().clear();
+        setGridImage(maze);
+        gridPane.add(imageView, 0, 1);
+        
+        Scene newScene = new Scene(gridPane, 1500, 800);
+        // GridPane.setColumnIndex(imageView, 0);
+        // GridPane.setRowIndex(imageView, 1);
+        return newScene;
+    }
+    
+}
